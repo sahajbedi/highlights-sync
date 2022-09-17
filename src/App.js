@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useState } from 'react';
+import Home from './components/Home';
+import Login from './components/Login';
+import Books from './components/Books';
+import { signOut } from "firebase/auth"
+import { auth } from "./firebase-config"
 
 function App() {
+  const [isAuth, setIsAuth] = useState(false);
+
+  const signUserOut = () => {
+    signOut(auth).then(() => {
+      localStorage.clear();
+      setIsAuth(false);
+      window.location.pathname = "/login";
+    })
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <nav>
+        <Link to="/">Home</Link>
+        {!isAuth ? <Link to="/login">Login</Link> : <button onClick={signUserOut}>Sign Out</button>}
+        <Link to="/books">Books</Link>
+      </nav>
+      <Routes>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/login' element={<Login setIsAuth={setIsAuth} />}></Route>
+        <Route path='/books' element={<Books />}></Route>
+      </Routes>
+    </Router>
   );
 }
 
