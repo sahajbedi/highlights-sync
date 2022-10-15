@@ -1,15 +1,17 @@
 import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider } from "firebase/auth"
 import { getFirestore } from "firebase/firestore"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAco3QHK4bc0meBP_TjjcrxpuIGVP_3GW0",
-  authDomain: "react-test-3301e.firebaseapp.com",
-  projectId: "react-test-3301e",
-  storageBucket: "react-test-3301e.appspot.com",
-  messagingSenderId: "116996115315",
-  appId: "1:116996115315:web:0a5e8d171bacd975c19306"
+  apiKey: "AIzaSyA0VUUtlfPOdgcwinMNXBu_3OQzY5GVHmw",
+  authDomain: "highlights-sync.firebaseapp.com",
+  projectId: "highlights-sync",
+  storageBucket: "highlights-sync.appspot.com",
+  messagingSenderId: "322342360162",
+  appId: "1:322342360162:web:67d18eaf10020388e76d3b",
+  measurementId: "G-Y23CJPZKVF"
 };
 
 // Initialize Firebase
