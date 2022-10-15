@@ -1,0 +1,17 @@
+/* .highlightsPage {
+    color: black;
+} */
+
+.highlightsPageRow {
+    display: flex;
+    width: 60%;
+    justify-content:center;
+    margin:"0 auto";
+    padding: 15px;
+}
+
+.highlightsRowCard {
+    width: 50rem;
+    text-align: justify;
+    padding: 10px;
+}
