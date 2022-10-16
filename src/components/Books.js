@@ -2,7 +2,7 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import AddBookForm from './AddBookForm';
+import AddBookForm from "./AddBookForm";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Books.css";
@@ -64,7 +64,15 @@ function Books() {
           {books.map((book) => {
             return (
               <tr key={book.bookId} onClick={() => rowClick(book.bookId)}>
-                <td>{book.title}</td>
+                <td>
+                  {book.coverUrl && (
+                    <img
+                      width="30px"
+                      src={book.coverUrl}
+                    />
+                  )}
+                  {book.title}
+                </td>
                 <td>{book.author}</td>
                 <td>{book.highlights}</td>
                 <td>{book.createdAt}</td>
@@ -73,7 +81,13 @@ function Books() {
             );
           })}
           {/* <tr>
-            <td>Why We Sleep</td>
+            <td>
+              <img
+                width="30px"
+                src="https://books.google.com/books/content?id=1EiJAwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+              />
+              Why We Sleep
+            </td>
             <td>Matthew Walker</td>
             <td>55</td>
             <td>2nd August '22</td>
