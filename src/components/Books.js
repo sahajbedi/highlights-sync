@@ -31,6 +31,15 @@ function Books() {
       });
   }, []);
 
+  const formatDate = (isoDate) => {
+    if (!isoDate) {
+      return "";
+    }
+    const tempDate = new Date(isoDate);
+    const month = tempDate.getMonth() + 1;
+    return tempDate.getDate() + "/" + month + "/" + tempDate.getFullYear();
+  }
+
   const rowClick = (bookId) => {
     console.log("Row Clicked");
     console.log(bookId);
@@ -75,8 +84,8 @@ function Books() {
                 </td>
                 <td>{book.author}</td>
                 <td>{book.highlights}</td>
-                <td>{book.createdAt}</td>
-                <td>{book.lastHighlighted}</td>
+                <td>{formatDate(book.createdAt)}</td>
+                <td>{formatDate(book.lastHighlighted)}</td>
               </tr>
             );
           })}
