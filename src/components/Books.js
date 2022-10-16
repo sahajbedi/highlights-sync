@@ -1,13 +1,23 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import AddBookForm from './AddBookForm';
 import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import "./Books.css";
 
 function Books() {
   const [books, setBooks] = useState([]);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("Book component loaded");
     fetch(
       "https://europe-west1-highlights-sync.cloudfunctions.net/api/v1/books"
     )
@@ -24,12 +34,30 @@ function Books() {
   const rowClick = (bookId) => {
     console.log("Row Clicked");
     console.log(bookId);
-    navigate('/books/' + bookId + "/highlights");
+    navigate("/books/" + bookId + "/highlights");
   };
 
   return (
-    <div>
-      <div>Books</div>
+    <div className="booksPage">
+      <Button variant="primary" onClick={handleShow} style={{ float: "right" }}>
+        Add Book
+      </Button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Book</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <AddBookForm />
+        </Modal.Body>
+        {/* <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer> */}
+      </Modal>
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
