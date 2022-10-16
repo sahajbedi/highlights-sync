@@ -32,7 +32,6 @@ function AddBookForm() {
   const saveBook = (event) => {
     console.log("Save book clicked");
     if (!title || !fullTitle || !author) {
-      console.log("Error");
       alert("Invalid submission");
       return;
     }
@@ -72,7 +71,6 @@ function AddBookForm() {
             placeholder="Enter title"
             onChange={handleTitleChange}
           />
-          <Form.Text className="text-muted">Title</Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicFullTitle">
           <Form.Label>Full Title</Form.Label>
@@ -81,7 +79,6 @@ function AddBookForm() {
             placeholder="Enter full title"
             onChange={handleFullTitleChange}
           />
-          <Form.Text className="text-muted">Full Title</Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicAuthor">
           <Form.Label>Author</Form.Label>
@@ -90,7 +87,6 @@ function AddBookForm() {
             placeholder="Enter author name"
             onChange={handleAuthorChange}
           />
-          <Form.Text className="text-muted">Author</Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCoverUrl">
           <Form.Label>Cover URL</Form.Label>
@@ -99,7 +95,6 @@ function AddBookForm() {
             placeholder="Enter cover URL"
             onChange={handleCoverUrlChange}
           />
-          <Form.Text className="text-muted">Cover URL</Form.Text>
         </Form.Group>
         <Button variant="primary" type="button" onClick={saveBook}>
           Submit
